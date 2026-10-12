@@ -1,0 +1,34 @@
+ITUS102 - PRACTICAL EXAMINATION | DEBUGGING AND IMPLEMENTATION REPORT
+Date: 12-10-2026 | Task 02 - Campus Canteen Order Calculator
+
+Enrollment No.: 26CE020
+Name: Shubham Desai
+
+SIMPLE BUGS (write a brief explanation for each)
+Bug | Original problem | Correction made | Why required
+S1  | href="#calcuator" (spelling mistake) | Changed to href="#calculator" | The link target must match the section id="calculator", otherwise the page does not scroll.
+S2  | Footer area used a generic <div class="site-footer"> | Changed <div> to <footer> (opening and closing tag) | <footer> is the correct semantic HTML5 element for site information.
+S3  | background-color #f1f6f9; had no colon | Changed to background-color: #f1f6f9; | CSS needs "property: value;" syntax, otherwise the declaration is ignored.
+S4  | CSS used the class selector .pageTitle | Changed to the id selector #pageTitle | The HTML heading has id="pageTitle"; ids are selected with #, classes with a dot.
+S5  | const subtotal = unitPrice + quantity; | Changed to unitPrice * quantity | Subtotal = price x quantity, not price + quantity.
+S6  | const serviceCharge = subtotal * 0.15; | Changed to subtotal * 0.05 | The service charge must be 5% of the subtotal.
+
+CODE COMPLETION / IMPLEMENTATION (briefly state what was completed)
+M1: Added <meta charset="UTF-8"> and <meta name="viewport" content="width=device-width, initial-scale=1.0"> inside <head>.
+M2: Added <aside class="notice"> with <h2>Important Note</h2> and a sentence asking users to check the entered values, placed between the calculator and results sections.
+M3: Made .nav-links display:flex with justify-content:space-between so links are horizontal.
+M4: Made .cards display:grid with grid-template-columns: 1fr 1fr for two equal columns.
+M5: Added @media (max-width: 600px) so .cards becomes one column (1fr) and .nav-links uses flex-direction: column.
+M6: calculateDiscount(amount, percentage) now returns amount * percentage / 100.
+D1: getRate(type) uses if / else if / else: Student = 10, Staff = 5, otherwise (Visitor) = 0.
+D2: calculateTotal(subtotal, discount, serviceCharge) returns subtotal - discount + serviceCharge.
+D3: buildBreakdown(unitPrice, quantity) uses a for loop from 1 to quantity and adds "After item i: Rs unitPrice * i" on a new line each time.
+
+FUNCTIONAL TEST
+Test input: Price Rs 100, Quantity 3, Customer type Student
+Observed result: Subtotal: Rs 300 | Discount: Rs 30 | Service: Rs 15 | Payable: Rs 285. Running cost: After item 1: Rs 100, After item 2: Rs 200, After item 3: Rs 300.
+Mobile layout checked (Yes/No): Yes (at 600px width and below, the two cards stack in one column and the navigation is vertical)
+
+GIT VERSION CONTROL
+git log -1 --oneline output: 6eb7af9 Fix S1-S6 bugs and complete M1-M6, D1-D3 canteen calculator
+GitHub URL (if available): https://github.com/desaishubhamce-code/canteen-calculator
